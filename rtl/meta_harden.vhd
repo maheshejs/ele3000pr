@@ -20,7 +20,7 @@ use IEEE.numeric_std.all;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity meta_harden is	
+entity meta_harden is  
 generic (
   GENERIC_IO_LOGIC : std_logic := '1'; -- 1=POSITIVE 0=NEGATIVE
   WIDTH            : integer   := 1
