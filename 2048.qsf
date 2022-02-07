@@ -243,15 +243,11 @@ set_global_assignment -name TIMEQUEST_MULTICORNER_ANALYSIS ON
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name ENABLE_SIGNALTAP ON
 set_global_assignment -name USE_SIGNALTAP_FILE test.stp
-set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (VHDL)"
 set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
-set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
-set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS NOT_USED -section_id eda_simulation
 set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH ram_neigh_tb -section_id eda_simulation
-set_global_assignment -name EDA_TEST_BENCH_NAME drawFractal_tb -section_id eda_simulation
-set_global_assignment -name EDA_DESIGN_INSTANCE_NAME drawFractal -section_id drawFractal_tb
-set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "200 ms" -section_id drawFractal_tb
-set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME drawFractal_tb -section_id drawFractal_tb
 set_global_assignment -name SMART_RECOMPILE ON
 set_global_assignment -name OPTIMIZATION_TECHNIQUE SPEED
 set_global_assignment -name PHYSICAL_SYNTHESIS_COMBO_LOGIC ON
@@ -268,8 +264,6 @@ set_global_assignment -name EDA_TEST_BENCH_NAME ram_neigh_tb -section_id eda_sim
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME ram_neigh -section_id ram_neigh_tb
 set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "1 us" -section_id ram_neigh_tb
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME ram_neigh_tb -section_id ram_neigh_tb
-set_global_assignment -name EDA_TEST_BENCH_FILE drawFractal_tb.vhd -section_id drawFractal_tb
-set_global_assignment -name EDA_TEST_BENCH_FILE ram_neigh_tb.vhd -section_id ram_neigh_tb
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
@@ -546,8 +540,14 @@ set_instance_assignment -name GLOBAL_SIGNAL GLOBAL_CLOCK -to "i2c_hdmi_config:i2
 set_instance_assignment -name GLOBAL_SIGNAL GLOBAL_CLOCK -to "clk_rst_gen:clk_rst_gen_inst|rst_bridge:rst_bridge_game_inst|sig_dst"
 set_instance_assignment -name GLOBAL_SIGNAL GLOBAL_CLOCK -to "clk_rst_gen:clk_rst_gen_inst|rst_bridge:rst_bridge_render_inst|sig_dst"
 set_instance_assignment -name GLOBAL_SIGNAL GLOBAL_CLOCK -to "clk_rst_gen:clk_rst_gen_inst|rst_bridge:rst_bridge_i2c_inst|sig_dst"
+set_global_assignment -name EDA_TEST_BENCH_FILE ram_neigh_tb.vhd -section_id ram_neigh_tb
+set_global_assignment -name MIF_FILE utils/memory_100.mif
+set_global_assignment -name SDC_FILE constraints/top.sdc
+set_global_assignment -name VHDL_FILE rtl/clk_rst_gen.vhd
+set_global_assignment -name VERILOG_FILE rtl/top.v
+set_global_assignment -name QIP_FILE rtl/tilesrom.qip
+set_global_assignment -name QIP_FILE rtl/clk_gen.qip
 set_global_assignment -name VHDL_FILE rtl/tiles_neighbour.vhd
-set_global_assignment -name VERILOG_FILE top.v
 set_global_assignment -name VHDL_FILE rtl/write_manager.vhd
 set_global_assignment -name VERILOG_FILE rtl/vga_generator.v
 set_global_assignment -name VHDL_FILE rtl/tiles_zero.vhd
@@ -577,8 +577,4 @@ set_global_assignment -name VHDL_FILE rtl/dp_ram.vhd
 set_global_assignment -name VHDL_FILE rtl/delay_cnt.vhd
 set_global_assignment -name VHDL_FILE rtl/dbnc.vhd
 set_global_assignment -name VHDL_FILE rtl/cnt.vhd
-set_global_assignment -name QIP_FILE tilesrom.qip
-set_global_assignment -name QIP_FILE clk_gen.qip
-set_global_assignment -name SIP_FILE clk_gen.sip
-set_global_assignment -name VHDL_FILE clk_rst_gen.vhd
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
